@@ -1,0 +1,12 @@
+{
+  "name": "sqlite-abstraction",
+  "version": "0.9.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "lodash": "^4.17.20",
+    "sqlite": "^4.0.18",
+    "sqlite3": "^5.0.0"
+  }
+}
