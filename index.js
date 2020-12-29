@@ -190,3 +190,5 @@ function Database(filename = ":memory:") {
     .all();
   console.log(test);
 })();
+
+// mc-todo: joins
