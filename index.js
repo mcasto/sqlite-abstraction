@@ -42,6 +42,7 @@ function Database(filename = ":memory:") {
     notNull,
     orderBy,
     limitNum,
+    innerJoin,
   };
 
   // ----- METHODS THAT RETURN RESULTS -----
@@ -176,17 +177,18 @@ function Database(filename = ":memory:") {
   function limitNum(value) {
     return require("./db-methods/limitNum")(this, value);
   }
+
+  function innerJoin(table, onConditions) {
+    return require("./db-methods/innerJoin")(this, table, onConditions);
+  }
 }
 
 (async () => {
-  const db = Database("./database.db");
+  const db = Database("./database.sqlite");
   const test = await db
-    .from("test")
-    .where("firstName")
-    .like("%m%")
-    .orWhere("lastName")
-    .like("%c%")
-    .select()
+    .from("company")
+    .innerJoin("department", { on: "company.id = department.id" })
+    .select(["emp_id", "name", "dept"])
     .all();
   console.log(test);
 })();

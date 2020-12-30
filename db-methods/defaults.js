@@ -8,4 +8,5 @@ module.exports = {
   selectDistinct: false,
   selectColumns: "",
   action: "",
+  joins: [],
 };
