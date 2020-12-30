@@ -1,11 +1,11 @@
 const { isArray } = require("lodash");
 
-module.exports = (context, table, onConditions) => {
+module.exports = (context, type, table, onConditions) => {
   if (!isArray(onConditions)) onConditions = [onConditions];
 
   context.joins.push({
     table,
-    type: "INNER",
+    type,
     onConditions,
   });
 

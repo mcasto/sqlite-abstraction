@@ -43,6 +43,7 @@ function Database(filename = ":memory:") {
     orderBy,
     limitNum,
     innerJoin,
+    leftJoin,
   };
 
   // ----- METHODS THAT RETURN RESULTS -----
@@ -179,16 +180,21 @@ function Database(filename = ":memory:") {
   }
 
   function innerJoin(table, onConditions) {
-    return require("./db-methods/innerJoin")(this, table, onConditions);
+    return require("./db-methods/joins")(this, "INNER", table, onConditions);
+  }
+
+  function leftJoin(table, onConditions) {
+    return require("./db-methods/joins")(this, "LEFT", table, onConditions);
   }
 }
 
 (async () => {
   const db = Database("./database.sqlite");
   const test = await db
-    .from("company")
-    .innerJoin("department", { on: "company.id = department.id" })
-    .select(["emp_id", "name", "dept"])
+    .from("Album AS a")
+    .innerJoin("Artist", { on: "Artist.ArtistId = a.ArtistId" })
+    .leftJoin("Track", { on: "a.AlbumId = Track.AlbumId" })
+    .select(["Artist.Name Artist", "a.Title Album", "Track.Name AS Track"])
     .all();
   console.log(test);
 })();

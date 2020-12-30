@@ -12,19 +12,18 @@ I switched to SQLite. I've been using SQL for over twenty years, so I'm comforta
 I want a DAL I can use for SQLite in NodeJS projects, and I am modeling it on Opis Database. This way, if I'm developing, for example, an Electron desktop app that syncs its data with an online tool I also create, if both the JS and PHP use similar code structure, it will mean less mental gear switching as I go from one environment to the other.
 
 ## Its Current Status
-I am going step-by-step through the Opis documentation and building my tool so it looks similar. I've built all the basic methods to retrieve data from a database. My next step is to work on table joins. I will *try* to remember to update this README as I complete sections, but it may fall behind from time to time. The quickest way to see where I am is to look in `index.js` for the `// mc-todo: ...` note. That's where I write a reminder to myself about the next section I plan to develop.
+I will *try* to remember to update this README as I complete sections, but it may fall behind from time to time. The quickest way to see where I am is to look in `index.js` for the `// mc-todo: ...` note. That's where I write a reminder to myself about the next section I plan to develop.
 
-The end result won't be exactly the same framework as Opis. Some of this will result in differences between JS and PHP. Other changes I'm making just because they suit me better.
+The end result won't be exactly the same framework as Opis. Some of this will result in differences between JS and PHP. Some are the result of Opis targeting multiple DB types and my tool only targeting SQLite. Other changes I'm making just because they suit me better.
 
 ## Remaining Sections To Build
-  1. Joins
-  2. Working with aggregates
-  3. Insert records
-  4. Update records
-  5. Delete records
-  6. Transactions
-  7. Creating tables
-  8. Modifying tables
+  1. Working with aggregates
+  1. Insert records
+  1. Update records
+  1. Delete records
+  1. Transactions
+  1. Creating tables
+  1. Modifying tables
 
 ## Contributions
 I don't expect anyone will chime in on this any time soon. I don't even know if anyone will find it before I finish, but, if you're reading this and want to contribute, feel free to send me a pull request for review.
