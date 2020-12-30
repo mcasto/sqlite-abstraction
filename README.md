@@ -12,7 +12,7 @@ I switched to SQLite. I've been using SQL for over twenty years, so I'm comforta
 I want a DAL I can use for SQLite in NodeJS projects, and I am modeling it on Opis Database. This way, if I'm developing, for example, an Electron desktop app that syncs its data with an online tool I also create, if both the JS and PHP use similar code structure, it will mean less mental gear switching as I go from one environment to the other.
 
 ## Its Current Status
-I will *try* to remember to update this README as I complete sections, but it may fall behind from time to time. The quickest way to see where I am is to look in `index.js` for the `// mc-todo: ...` note. That's where I write a reminder to myself about the next section I plan to develop.
+I will *try* to remember to update this README as I complete sections, but it may fall behind from time to time.
 
 The end result won't be exactly the same framework as Opis. Some of this will result in differences between JS and PHP. Some are the result of Opis targeting multiple DB types and my tool only targeting SQLite. Other changes I'm making just because they suit me better.
 

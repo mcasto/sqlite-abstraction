@@ -193,15 +193,18 @@ function Database(filename = ":memory:") {
   }
 }
 
+/**
+ * SELECT COUNT(CustomerID), Country
+    FROM Customers
+    GROUP BY Country;
+ */
+
 (async () => {
   const db = Database("./database.sqlite");
   const test = await db
-    .from("Album")
-    .groupBy("Album.Title")
-    .limitNum(5)
-    .select()
+    .from("Customer")
+    .groupBy("Country")
+    .select(["COUNT(CustomerId) AS Count", "Country"])
     .all();
   console.log(test);
 })();
-
-// mc-todo: joins
