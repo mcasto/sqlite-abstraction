@@ -9,4 +9,5 @@ module.exports = {
   selectColumns: "",
   action: "",
   joins: [],
+  group: "",
 };

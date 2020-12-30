@@ -17,13 +17,16 @@ I will *try* to remember to update this README as I complete sections, but it ma
 The end result won't be exactly the same framework as Opis. Some of this will result in differences between JS and PHP. Some are the result of Opis targeting multiple DB types and my tool only targeting SQLite. Other changes I'm making just because they suit me better.
 
 ## Remaining Sections To Build
-  1. Working with aggregates
   1. Insert records
   1. Update records
   1. Delete records
   1. Transactions
   1. Creating tables
   1. Modifying tables
+
+  > **Having** (clause of *groupBy*)
+  > 
+  > I'm unsure how to handle this one right now, so I'll come back to it at the end.
 
 ## Contributions
 I don't expect anyone will chime in on this any time soon. I don't even know if anyone will find it before I finish, but, if you're reading this and want to contribute, feel free to send me a pull request for review.

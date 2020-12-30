@@ -1,5 +1,5 @@
-module.exports = (obj) => {
-  const conditions = obj.whereConditions;
+module.exports = (context) => {
+  const conditions = context.whereConditions;
 
   let whereClause = "";
   if (conditions.length > 0) {
@@ -18,16 +18,18 @@ module.exports = (obj) => {
 
   let orderBy = "";
 
-  if (obj.sortBy.length > 0) {
-    orderBy = ` ORDER BY ${obj.sortBy
+  if (context.sortBy.length > 0) {
+    orderBy = ` ORDER BY ${context.sortBy
       .map(({ column, order }) => `${column} ${order}`)
       .join(",")}`;
   }
 
   const limitParams =
-    obj.limit !== null ? ` LIMIT ${obj.offsetNum},${obj.limit}` : "";
+    context.limit !== null
+      ? ` LIMIT ${context.offsetNum},${context.limit}`
+      : "";
 
-  const joins = obj.joins
+  const joins = context.joins
     .map(({ table, type, onConditions }) => {
       let conditions = onConditions.map((entry) => {
         const [link, condition] = Object.entries(entry).shift();
@@ -38,9 +40,13 @@ module.exports = (obj) => {
     })
     .join(" ");
 
-  const sql = `${obj.action} ${obj.selectDistinct ? "DISTINCT" : ""} ${
-    obj.selectColumns
-  } FROM ${obj.table} ${joins} ${whereClause} ${orderBy} ${limitParams}`;
+  // mc-todo: handle the HAVING clause of context.group
+
+  const sql = `${context.action} ${context.selectDistinct ? "DISTINCT" : ""} ${
+    context.selectColumns
+  } FROM ${context.table} ${joins} ${whereClause} ${
+    context.group
+  } ${orderBy} ${limitParams}`;
 
   console.log(sql);
   return sql;

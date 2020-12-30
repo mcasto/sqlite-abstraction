@@ -44,6 +44,7 @@ function Database(filename = ":memory:") {
     limitNum,
     innerJoin,
     leftJoin,
+    groupBy,
   };
 
   // ----- METHODS THAT RETURN RESULTS -----
@@ -186,15 +187,19 @@ function Database(filename = ":memory:") {
   function leftJoin(table, onConditions) {
     return require("./db-methods/joins")(this, "LEFT", table, onConditions);
   }
+
+  function groupBy(fields) {
+    return require("./db-methods/groupBy")(this, fields);
+  }
 }
 
 (async () => {
   const db = Database("./database.sqlite");
   const test = await db
-    .from("Album AS a")
-    .innerJoin("Artist", { on: "Artist.ArtistId = a.ArtistId" })
-    .leftJoin("Track", { on: "a.AlbumId = Track.AlbumId" })
-    .select(["Artist.Name Artist", "a.Title Album", "Track.Name AS Track"])
+    .from("Album")
+    .groupBy("Album.Title")
+    .limitNum(5)
+    .select()
     .all();
   console.log(test);
 })();
