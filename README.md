@@ -18,6 +18,7 @@ The end result won't be exactly the same framework as Opis. Some of this will re
 
 ## Remaining Sections To Build
   1. Insert records
+  1. Modify all methods to use prepared statements (also use backticks around column names)
   1. Update records
   1. Delete records
   1. Transactions

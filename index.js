@@ -45,9 +45,19 @@ function Database(filename = ":memory:") {
     innerJoin,
     leftJoin,
     groupBy,
+    insert,
   };
 
-  // ----- METHODS THAT RETURN RESULTS -----
+  // ----- METHODS THAT END CHAIN (USUALLY RETURN DATA) -----
+  async function insert(table, document) {
+    // returns the inserted document (including autoincrement field)
+
+    const results = require("./db-methods/insert")(db, table, document);
+
+    reset(this);
+    return results;
+  }
+
   async function all() {
     const results = await require("./db-methods/all")(this, db);
     reset(this);
@@ -201,10 +211,11 @@ function Database(filename = ":memory:") {
 
 (async () => {
   const db = Database("./database.sqlite");
-  const test = await db
-    .from("Customer")
-    .groupBy("Country")
-    .select(["COUNT(CustomerId) AS Count", "Country"])
-    .all();
+
+  const test = await db.insert("test", {
+    firstName: "Bryan",
+    lastName: "Wilson",
+    age: "72",
+  });
   console.log(test);
 })();

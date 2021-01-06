@@ -10,4 +10,6 @@ module.exports = {
   action: "",
   joins: [],
   group: "",
+  insertDocument: {},
+  insertTable: "",
 };
