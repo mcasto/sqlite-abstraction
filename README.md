@@ -17,7 +17,6 @@ I will *try* to remember to update this README as I complete sections, but it ma
 The end result won't be exactly the same framework as Opis. Some of this will result in differences between JS and PHP. Some are the result of Opis targeting multiple DB types and my tool only targeting SQLite. Other changes I'm making just because they suit me better.
 
 ## Remaining Sections To Build
-  1. Insert records
   1. Modify all methods to use prepared statements (also use backticks around column names)
   1. Update records
   1. Delete records
